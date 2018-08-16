@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cajun Ipsum</title>
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.0/pure-min.css">
+	<link rel="stylesheet" href="css/app.css">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</head>
+
+<body>
+
+<div class="pure-g-r" id="layout">
+	
+	<div class="sidebar pure-u">
+		<header class="header pure-u-1">
+			<hgroup>
+				<img align="center" src="img/crawdad.png" />
+				<h1 class="brand-title">Cajun Ipsum</h1>
+				<h2 class="brand-tagline">Some Ipsum for your web page, cher!</h2>
+			</hgroup>
+
+		</header>
+	</div>
+
+    <div class="content pure-u-1">
+		
+        <div class="posts pure-g">
+
+            <section class="post pure-u-1">
+				
+			<header class="post-header">
+				<h2 class="post-title pure-u-1">Introducing Cajun Ipsum</h2>
+			</header>
+
+			<div class="pure-u-1">
+				<p>
+					To generate your Cajun Ipsum, just tell us how many paragraphs of text you want and hit the big
+					ole button!
+				</p>
+				<p>
+					<input type="number" style="width:50px" id="paraNumber" value="1"> 
+					<a class="pure-button" href="#" id="genButton">Generate</a>
+				</p>
+
+				<textarea class="ipsumResults">
+				</textarea>
+			</div>
+
+			<script src="js/ci.js"></script>
+			<script>
+			$(document).ready(function() {
+				var resultDiv = $(".ipsumResults");
+
+				$("#genButton").on("click", function() {
+					var paras = Number($("#paraNumber").val());
+					if(paras >= 1) {
+						resultDiv.val(cajunIpsum.generate(paras));
+					}
+				});
+			});
+			</script>
+
+            </section>
+        </div>
+
+        <footer class="footer">
+			<p>
+			Created by <a href="http://www.raymondcamden.com">Raymond Camden</a> and 
+			<a href="http://bayousoft.com/">Ryan LeTulle</a>.
+			</p>
+        </footer>
+	
+	</div>
+</div>
+
+<script src="http://yui.yahooapis.com/3.10.1/build/yui/yui-min.js"></script>
+<script>
+YUI().use('node-base', 'node-event-delegate', function (Y) {
+    // This just makes sure that the href="#" attached to the <a> elements
+    // don't scroll you back up the page.
+    Y.one('.content').delegate('click', function (e) {
+        e.preventDefault();
+    }, 'a[href="#"]');
+});
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-70863-22', 'cajunipsum.com');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
+
+
